@@ -11,11 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="drawMenu.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="script.cpp" />
+    <ClCompile Include="weaponMods.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="drawMenu.h" />
     <ClInclude Include="inc\enums.h" />
     <ClInclude Include="inc\main.h" />
     <ClInclude Include="inc\nativeCaller.h" />
@@ -23,6 +26,7 @@
     <ClInclude Include="inc\types.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="script.h" />
+    <ClInclude Include="weaponMods.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="WeaponAttachmentTrainer.ini" />
