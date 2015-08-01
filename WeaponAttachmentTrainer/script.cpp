@@ -1,5 +1,4 @@
 #include "weaponMods.h"
-#include "keyboard.h"
 #include <ctime>
 
 #pragma warning(disable : 4244 4305 4800) // double <-> float conversions (and some bool conversion bullshit that I don't care about)
@@ -18,7 +17,7 @@ void update_features()
 {
 	update_status_text();
 
-	if (featureSilencerToggle && IsKeyJustUp(silencerToggleHotkey)) //keyboard 'O' (O as in your mom saying "oh my god ken gimme dat cack")
+	if (featureSilencerToggle && IsKeyJustUp(silencerToggleHotkey))
 	{
 		toggleSilencer();
 	}
