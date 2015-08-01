@@ -53,13 +53,13 @@ void process_weaponupgrade_menu()
 		do
 		{
 			// draw menu
-			draw_menu_line(caption, lineWidth, 15.0, 18.0, 0.0, 5.0, false, true);
+			draw_menu_line(caption, lineWidth, 15.0, 18.0, 15.0, 5.0, false, true);
 			for (int i = 0; i < lineCount; i++)
 				if (i != activeLineIndexWeapons)
 					draw_menu_line(line_as_str(lines[i].text, lines[i].pState),
-					lineWidth, 9.0, 60.0 + i * 36.0, 0.0, 9.0, false, false);
+					lineWidth, 9.0, 60.0 + i * 36.0, 15.0, 9.0, false, false);
 			draw_menu_line(line_as_str(lines[activeLineIndexWeapons].text, lines[activeLineIndexWeapons].pState),
-				lineWidth + 1.0, 11.0, 56.0 + activeLineIndexWeapons * 36.0, 0.0, 7.0, true, false);
+				lineWidth + 1.0, 11.0, 56.0 + activeLineIndexWeapons * 36.0, 15.0, 7.0, true, false);
 
 			update_features();
 			WAIT(0);
