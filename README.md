@@ -6,7 +6,7 @@ It also comes with a hotkey that will toggle your weapons silencer on and off. S
 Copy WeaponAttachmentTrainer.asi and WeaponAttachmentTrainer.ini to whatever folder your GTAV.EXE resides in.
 
 ## Usage
-Press 'F5' in game to toggle the trainer menu. 'O' toggles silencer.
+Press 'F5' in game to toggle the trainer menu. 'O' toggles silencer. The trainer menu uses the same controls as NativeTrainer (numpad, basically).
 
 WeaponAttachmentTrainer.ini has all that you need to change the hotkeys.
 
