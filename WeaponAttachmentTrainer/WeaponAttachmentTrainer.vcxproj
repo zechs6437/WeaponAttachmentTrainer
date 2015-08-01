@@ -16,9 +16,11 @@
     <ClCompile Include="script.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\inc\enums.h" />
-    <ClInclude Include="..\..\inc\natives.h" />
-    <ClInclude Include="..\..\inc\types.h" />
+    <ClInclude Include="inc\enums.h" />
+    <ClInclude Include="inc\main.h" />
+    <ClInclude Include="inc\nativeCaller.h" />
+    <ClInclude Include="inc\natives.h" />
+    <ClInclude Include="inc\types.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="script.h" />
   </ItemGroup>
@@ -99,7 +101,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalOptions>..\..\lib\ScriptHookV.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>lib\ScriptHookV.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)WeaponAttachmentTrainer.ini" "$(OutDir)" /c /Y</Command>
