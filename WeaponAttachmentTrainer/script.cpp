@@ -5,8 +5,6 @@
 
 #pragma warning(disable : 4244 4305 4800) // double <-> float conversions (and some bool conversion bullshit that I don't care about)
 
-BOOL niceFlyToggle = true;
-
 Hash silencerHashes[5] = { 0x65EA7EBB, 0x837445AA, 0xA73D4664, 0xC304849A, 0xE608B35E };
 Hash magazineHashes[22] = { 0x249A17D5, 0x64F9C62B, 0x7B0033B3, 0x7C8BD10E, 0x86BD7F72, 0x8EC1C979, 0xB3688B0F, 0xD6C59CD6, 0xED265A1C, 0xD67B4F2D, 0xD9D3AC92, 0x33BA12E8, 0x10E6BA2B, 0x350966FB,
 	0xBB46E417, 0x334A5203, 0x82158B47, 0xEAC8C270, 0xB1214F9B, 0x91109691, 0xCCFD2AC5, 0x971CF6FD };
@@ -355,25 +353,7 @@ void update_features()
 
 	if (featureSilencerToggle && IsKeyJustUp(silencerToggleHotkey)) //keyboard 'O' (O as in your mom saying "oh my god ken gimme dat cack")
 	{
-		Ped playerPed = PLAYER::PLAYER_PED_ID();
-		Hash playerWeapon = WEAPON::GET_SELECTED_PED_WEAPON(playerPed);
-
-		for (int a = 0; a < 5; a = a + 1)
-		{
-			if (WEAPON::_CAN_WEAPON_HAVE_COMPONENT(playerWeapon, silencerHashes[a]))
-			{
-				if (WEAPON::HAS_PED_GOT_WEAPON_COMPONENT(playerPed, playerWeapon, silencerHashes[a]))
-				{
-					WEAPON::REMOVE_WEAPON_COMPONENT_FROM_PED(playerPed, playerWeapon, silencerHashes[a]);
-					set_status_text("Silencer Removed");
-				}
-				else
-				{
-					WEAPON::GIVE_WEAPON_COMPONENT_TO_PED(playerPed, playerWeapon, silencerHashes[a]);
-					set_status_text("Silencer Attached");
-				}
-			}
-		}
+		toggleSilencer();
 	}
 }
 
@@ -381,7 +361,6 @@ int activeLineIndexWeapons = 0;
 
 void process_weaponupgrade_menu()
 {
-	//const float lineWidth = 250.0;
 	const float lineWidth = 300.0;
 	const int lineCount = 6;
 
