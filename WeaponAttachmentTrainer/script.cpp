@@ -15,7 +15,8 @@ Hash flashlightHashes[2] = { 0x359B7AAE, 0x7BC4CDDC };
 Hash scopeHashes[7] = { 0x9D2FBF29, 0xA0D89C42, 0xAA2C45B4, 0xD2443DDC, 0x3CC6BA57, 0x3C00AFED, 0xBC54DA77 };
 
 bool featureSilencerToggle = GetPrivateProfileInt("Toggles", "SilencerToggle", 1, "./WeaponAttachmentTrainer.ini");
-int trainerToggle = GetPrivateProfileInt("Hotkeys", "WATHotkey", 0x74, "./WeaponAttachmentTrainer.ini");
+int trainerToggleHotkey = GetPrivateProfileInt("Hotkeys", "WATHotkey", 0x74, "./WeaponAttachmentTrainer.ini"); // Default 'F5'
+int silencerToggleHotkey = GetPrivateProfileInt("Hotkeys", "SilencerHotkey", 0x4F, "./WeaponAttachmentTrainer.ini"); // Default 'O' (O as in your mom saying "oh my god ken gimme dat cack")
 
 bool featureWeaponSilencer = false;
 bool featureWeaponMagazine = false;
@@ -60,7 +61,7 @@ void set_status_text(std::string str, DWORD time = 2500, bool isGxtEntry = false
 
 bool trainer_switch_pressed()
 {
-	return IsKeyJustUp(trainerToggle);
+	return IsKeyJustUp(trainerToggleHotkey);
 }
 
 void get_button_state(bool *a, bool *b, bool *up, bool *down, bool *l, bool *r)
@@ -418,7 +419,7 @@ void update_features()
 {
 	update_status_text();
 
-	if (featureSilencerToggle && IsKeyJustUp(0x4F)) //keyboard 'O' (O as in your mom saying "oh my god ken gimme dat cack")
+	if (featureSilencerToggle && IsKeyJustUp(silencerToggleHotkey)) //keyboard 'O' (O as in your mom saying "oh my god ken gimme dat cack")
 	{
 		Ped playerPed = PLAYER::PLAYER_PED_ID();
 		Hash playerWeapon = WEAPON::GET_SELECTED_PED_WEAPON(playerPed);
@@ -456,7 +457,7 @@ void process_weaponupgrade_menu()
 		bool		*pState;
 		bool		*pUpdated;
 	} lines[lineCount] = {
-		{ "Silencer EZ Toggle (O)", &featureSilencerToggle, NULL },
+		{ "Silencer EZ Toggle (Default: 'O')", &featureSilencerToggle, NULL },
 		{ "Silencer Attachment", &featureWeaponSilencer, NULL },
 		{ "Magazine Attachment", &featureWeaponMagazine, NULL },
 		{ "Grip Attachment", &featureWeaponGrip, NULL },
