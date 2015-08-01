@@ -4,7 +4,7 @@
 #pragma warning(disable : 4244 4305 4800) // double <-> float conversions (and some bool conversion bullshit that I don't care about)
 
 bool featureSilencerToggle = GetPrivateProfileInt("Toggles", "SilencerToggle", 1, "./WeaponAttachmentTrainer.ini");
-int trainerToggleHotkey = GetPrivateProfileInt("Hotkeys", "WATHotkey", 0x74, "./WeaponAttachmentTrainer.ini"); // Default 'F5'
+int trainerToggleHotkey = GetPrivateProfileInt("Hotkeys", "MenuHotkey", 0x74, "./WeaponAttachmentTrainer.ini"); // Default 'F5'
 int silencerToggleHotkey = GetPrivateProfileInt("Hotkeys", "SilencerHotkey", 0x4F, "./WeaponAttachmentTrainer.ini"); // Default 'O' (O as in your mom saying "oh my god ken gimme dat cack")
 
 bool featureWeaponSilencer = false;
