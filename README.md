@@ -2,6 +2,8 @@
 This GTAV script allows you to change your selected weapons attachments on the fly. 
 It also comes with a hotkey that will toggle your weapons silencer on and off. Sick of your silenced pistol and you just want to blast on fools on the streets all loud-like? Hit 'O' and remove that bitch. That's keyboard 'O' as in "OH MY GOD I DON'T HAVE TO GO TO AMMUNATION ANYMORE TO CHANGE ATTACHMENTS ON MY GUNS".
 
+This script also allows you to change your weapon skins. It also allows you to toggle the DLC skins added in GTAV Title Update 1.27 https://support.rockstargames.com/hc/en-us/articles/205705358--6-10-15-GTAV-Title-Update-1-27-Notes-PS4-Xbox-One-PS3-Xbox-360-PC-
+
 ## Installation
 Copy WeaponAttachmentTrainer.asi and WeaponAttachmentTrainer.ini to whatever folder your GTAV.EXE resides in.
 
