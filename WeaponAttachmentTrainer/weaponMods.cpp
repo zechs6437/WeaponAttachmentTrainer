@@ -112,6 +112,56 @@ void toggleScope()
 	}
 }
 
+void toggleWeaponSkin()
+{
+	Ped playerPed = PLAYER::PLAYER_PED_ID();
+	Hash playerWeapon = WEAPON::GET_SELECTED_PED_WEAPON(playerPed);
+
+	for (int a = 0; a < 12; a = a + 1)
+	{
+		if (WEAPON::_CAN_WEAPON_HAVE_COMPONENT(playerWeapon, skinHashes[a]))
+		{
+			if (WEAPON::HAS_PED_GOT_WEAPON_COMPONENT(playerPed, playerWeapon, skinHashes[a]))
+			{
+				WEAPON::REMOVE_WEAPON_COMPONENT_FROM_PED(playerPed, playerWeapon, skinHashes[a]);
+				set_status_text("DLC Skin Removed");
+			}
+			else
+			{
+				WEAPON::GIVE_WEAPON_COMPONENT_TO_PED(playerPed, playerWeapon, skinHashes[a]);
+				set_status_text("DLC Skin Applied");
+			}
+		}
+	}
+}
+
+void changeWeaponTint(int tintSelection)
+{
+	Ped playerPed = PLAYER::PLAYER_PED_ID();
+	Hash playerWeapon = WEAPON::GET_SELECTED_PED_WEAPON(playerPed);
+	WEAPON::SET_PED_WEAPON_TINT_INDEX(playerPed, playerWeapon, tintSelection);
+
+	for (int a = 0; a < 8; a = a + 1)
+	{
+		featureWeaponTint[a] = false;
+	}
+	featureWeaponTint[tintSelection] = true;
+}
+
+void checkWeaponTint()
+{
+	Ped playerPed = PLAYER::PLAYER_PED_ID();
+	Hash playerWeapon = WEAPON::GET_SELECTED_PED_WEAPON(playerPed);
+
+	int currentTint = WEAPON::GET_PED_WEAPON_TINT_INDEX(playerPed, playerWeapon);
+
+	for (int a = 0; a < 8; a = a + 1)
+	{
+		featureWeaponTint[a] = false;
+	}
+	featureWeaponTint[currentTint] = true;
+}
+
 void weaponSanityCheck()
 {
 	Ped playerPed = PLAYER::PLAYER_PED_ID();
@@ -121,6 +171,7 @@ void weaponSanityCheck()
 	bool magazineSanity = false;
 	bool flashlightSanity = false;
 	bool scopeSanity = false;
+	bool skinSanity = false;
 
 	for (int a = 0; a < 5; a = a + 1)
 	{
@@ -183,4 +234,17 @@ void weaponSanityCheck()
 	}
 	featureWeaponScope = scopeSanity;
 
+	for (int a = 0; a < 12; a = a + 1)
+	{
+		if (WEAPON::_CAN_WEAPON_HAVE_COMPONENT(playerWeapon, skinHashes[a]))
+		{
+			skinSanity = true;
+			if (WEAPON::HAS_PED_GOT_WEAPON_COMPONENT(playerPed, playerWeapon, skinHashes[a]))
+				featureWeaponSkinDLC = true;
+			else
+				skinSanity = false;
+			featureWeaponSkinDLC = false;
+		}
+	}
+	featureWeaponSkinDLC = skinSanity;
 }

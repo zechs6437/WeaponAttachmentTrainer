@@ -9,18 +9,24 @@ static Hash magazineHashes[22] = { 0x249A17D5, 0x64F9C62B, 0x7B0033B3, 0x7C8BD10
 static Hash gripHash = 0xC164F53;
 static Hash flashlightHashes[2] = { 0x359B7AAE, 0x7BC4CDDC };
 static Hash scopeHashes[7] = { 0x9D2FBF29, 0xA0D89C42, 0xAA2C45B4, 0xD2443DDC, 0x3CC6BA57, 0x3C00AFED, 0xBC54DA77 };
+static Hash skinHashes[12] = { 0x4ead7533, 0x377cd377, 0xd89b9658, 0x9b76c72c, 0xd7391086, 0x77b8ab2f, 0x7a6a7b7b, 0x27872c90, 0x487aae09, 0x85a64df9, 0x4032b5e7, 0x161e9241 };
 
 extern bool featureWeaponSilencer;
 extern bool featureWeaponMagazine;
 extern bool featureWeaponGrip;
 extern bool featureWeaponFlashlight;
 extern bool featureWeaponScope;
+extern bool featureWeaponTint[];
+extern bool featureWeaponSkinDLC;
 
 void toggleSilencer();
 void toggleMagazine();
 void toggleGrip();
 void toggleFlashlight();
 void toggleScope();
+void toggleWeaponSkin();
+void changeWeaponTint(int tintSelection);
+void checkWeaponTint();
 void weaponSanityCheck();
 
 #endif
@@ -91,4 +97,41 @@ Special finish - 0x77B8AB2F: .50 Pistol,
 Special finish - 0x7A6A7B7B: Heavy Pistol,
 Special finish - 0x161E9241: Marksman Rifle,
 ??? - 0x9BC64089: Sniper Rifle,
+*/
+
+/* 
+	Additional notes
+	----------------
+	DLC Weapon Skin Component Hashes:
+	excerpt from gunclub_shop.c4
+
+	auto sub_26bcf(auto a_0) {
+		switch (a_0) {
+		case ${weapon_assaultrifle}:
+			return 0x4ead7533;
+		case ${weapon_advancedrifle}:
+			return 0x377cd377;
+		case ${weapon_carbinerifle}:
+			return 0xd89b9658;
+		case ${weapon_appistol}:
+			return 0x9b76c72c;
+		case ${weapon_pistol}:
+			return 0xd7391086;
+		case 0x99aeeb3b: 		//pistol .50
+			return 0x77b8ab2f;
+		case ${weapon_heavypistol}:
+			return 0x7a6a7b7b;
+		case ${weapon_smg}:
+			return 0x27872c90;
+		case ${weapon_microsmg}:
+			return 0x487aae09;
+		case ${weapon_sawnoffshotgun}:
+			return 0x85a64df9;
+		case ${weapon_sniperrifle}:
+			return 0x4032b5e7;
+		case 0xc734385a:		//marksman rifle
+			return 0x161e9241;
+		}
+		return 0;
+	}
 */
